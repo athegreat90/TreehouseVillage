@@ -1,0 +1,47 @@
+{
+  "ok": true,
+  "targets": {
+    "26.1.2": {
+      "archive": "build/server-cache/26.1.2-97ccd4c0ed3f81bbb7bfacddd1090b0c56f9bc51.jar",
+      "formats": {
+        "data_pack_format": [
+          101,
+          1
+        ],
+        "data_version": 4790,
+        "resource_pack_format": [
+          84,
+          0
+        ]
+      }
+    },
+    "26.2": {
+      "archive": "build/server-cache/26.2-823e2250d24b3ddac457a60c92a6a941943fcd6a.jar",
+      "formats": {
+        "data_pack_format": [
+          107,
+          1
+        ],
+        "data_version": 4903,
+        "resource_pack_format": [
+          88,
+          0
+        ]
+      }
+    },
+    "26.3": {
+      "archive": "build/server-cache/26.3-33680f5f2ac32864d6d7cf5e56a705fdb3e05f4c.jar",
+      "formats": {
+        "data_pack_format": [
+          121,
+          0
+        ],
+        "data_version": 5023,
+        "resource_pack_format": [
+          97,
+          1
+        ]
+      }
+    }
+  }
+}

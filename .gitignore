@@ -1,0 +1,17 @@
+# Local environment, caches and disposable artifacts (project-local by policy)
+.venv/
+.venv312/
+.env
+.env.*
+*.pem
+*.key
+dist/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# build/ is disposable except compatibility evidence
+build/*
+!build/compatibility/
+build/compatibility/last-run.json

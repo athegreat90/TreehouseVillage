@@ -1,0 +1,68 @@
+{
+  "archive_evidence": {
+    "embedded_version": {
+      "build_time": "2026-04-09T10:11:03+00:00",
+      "id": "26.1.2",
+      "java_component": "java-runtime-epsilon",
+      "java_version": 25,
+      "name": "26.1.2",
+      "pack_version": {
+        "data_major": 101,
+        "data_minor": 1,
+        "resource_major": 84,
+        "resource_minor": 0
+      },
+      "protocol_version": 775,
+      "series_id": "main",
+      "stable": true,
+      "use_editor": false,
+      "world_version": 4790
+    },
+    "formats": {
+      "data_pack_format": [
+        101,
+        1
+      ],
+      "data_version": 4790,
+      "resource_pack_format": [
+        84,
+        0
+      ]
+    },
+    "id": "26.1.2",
+    "runtime_qa": "pending",
+    "server_sha1_verified": true,
+    "server_size_verified": true,
+    "support": "unverified",
+    "version_entry": "version.json"
+  },
+  "archive_path": "build/server-cache/26.1.2-97ccd4c0ed3f81bbb7bfacddd1090b0c56f9bc51.jar",
+  "evidence": "build/compatibility/26.1.2.json",
+  "formats": {
+    "data_pack_format": [
+      101,
+      1
+    ],
+    "data_version": 4790,
+    "resource_pack_format": [
+      84,
+      0
+    ]
+  },
+  "id": "26.1.2",
+  "java": {
+    "component": "java-runtime-epsilon",
+    "major_version": 25
+  },
+  "official_type": "release",
+  "release_status": "official_release",
+  "runtime_qa": "pending",
+  "schema_version": 1,
+  "server": {
+    "sha1": "97ccd4c0ed3f81bbb7bfacddd1090b0c56f9bc51",
+    "size": 60417480,
+    "url": "https://piston-data.mojang.com/v1/objects/97ccd4c0ed3f81bbb7bfacddd1090b0c56f9bc51/server.jar"
+  },
+  "status": "metadata_found",
+  "support": "unverified"
+}
