@@ -25,7 +25,7 @@ Delivery: feature-branch-chain; verified work-unit commits authorized, no push/p
 - T0e / M0 environment incident | S1-S3,S10,S13 | inline + independent high-risk verifier | done: rapidnbt1.3.5 independently verified; focused/full tests and pip check clean; commit recorded | commit: 9754e79.
 - T0a / M0 archive slice | S1-S3,S10,S13 | inline + independent high-risk verifier | done: exact archive metadata and server formats verified; work-unit commit recorded | commit: 9754e79.
 - T0 / M0 runtime gate | S1-S3,S10,S13 | done: independent verifier PASS; exact two-block probes pass26.1.2/26.2/26.3; focused13/full66; docs current; commit recorded | commit: 9754e79.
-- T1 / M1 | S3,S10 | inline + independent high-risk verifier | done: bounded re-verification PASS; dead import removed; final focused7 passed/0.03s;full73 passed/2.09s;commit now being created | commit: pending..
+- T1 / M1 | S3,S10 | inline + independent high-risk verifier | done: bounded re-verification PASS; dead import removed; final focused7 passed/0.03s;full73 passed/2.09s | commit: 9d26d7a..
 - T2 / M2 | S6-S8,S10 | inline | pending: independent coverage, collision and movement validators | commit: pending.
 - T3 / M3 | S4-S5,S7 | inline | pending: trees, supports, platforms and foliage exclusion | commit: pending.
 - T4 / M4 | S6 | inline | pending: complete building catalogue and fixtures | commit: pending.
@@ -37,6 +37,8 @@ Delivery: feature-branch-chain; verified work-unit commits authorized, no push/p
 - T10 / M10 | S1-S2,S11-S12 | inline + independent verifier | pending: docs, CI, packaging and final report | commit: pending.
 
 ## Log
+L38 — T1 work-unit commit created: `9d26d7a` (`feat(generator): add deterministic geometry serialization foundation`). T1 delivers geometry/model.py, serialization/structure.py, serialization/segmentation.py and five focused foundation tests. T1 scope is complete for S3/S10 foundation only; future round-trip scene loading, block entities, validators, trees, buildings, bridges and village generation remain separate tasks.
+
 L37 — T1 bounded re-verification mv5nxnos-8-7kod PASS: diff check exit0; focused7 passed0.05s; full unit suite73 passed2.17s; independent wire inspection confirmed size List[Int] tag9, palette/blocks List[Compound], block positions List[Int], and legacy/26.3 palette keys. Removed unused IntArrayTag import. Final parent focused7 passed0.03s, full73 passed2.09s, diff check had only pre-existing CRLF warning. T1 is commit-ready; no village/game/release claims.
 
 L36 — User requested todo reconciliation, verbatim: "The todo plan has not been reviewed during several tool-use turns. Check whether it still matches the work performed and update tasks where needed. Do not mark work done without verification." Rebuilt projection with T1 only in progress. Verifier mv5nudm1-7-f2bd returned PARTIAL: `size` was TAG_IntArray, incompatible with Java structure-template schema; no commit readiness. Added two regression tests; RED reproduced as focused6 passed/1 failed. Corrected serializer source to emit List[Int], but focused/full GREEN and re-verification are still pending. No task marked done, no commit or game probe performed for this correction.
