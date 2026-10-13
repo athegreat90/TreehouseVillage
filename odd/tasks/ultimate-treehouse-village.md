@@ -1,6 +1,6 @@
 # Ultimate Treehouse Village — ODD feature tasks
 Build two complete vanilla villages at the exclusive TreehouseVillage root; branch: feature/ultimate-treehouse-village.
-Delivery: feature-branch-chain; verified work-unit commits authorized, no push/publishing. Runner: .venv/Scripts/python.exe -m pytest.
+Delivery: per-TODO GitHub PRs to main; verified work-unit commits, branch pushes, PR creation and merges authorized; no unrelated publishing. Runner: .venv/Scripts/python.exe -m pytest.
 
 ## Specs
 - S1: "All Python source code, datapack assets, tests, documentation, configurations, generated NBT templates, and release files must remain inside this directory." "Do not modify, rename, delete, or overwrite sibling datapack projects."
@@ -18,6 +18,7 @@ Delivery: feature-branch-chain; verified work-unit commits authorized, no push/p
 - S13: "Continue with the plan execution"; current approval: "Continue with the execution"; approved authorization: "Allow local server tests and work-unit commits"; selected delivery: "Feature/tracker branch chain — recommended".
 
 - S14: "Yes and show me the minecraft client with the datapack"
+- S15: "if not, on each TODO complete create a branch, push it, then create a PR to main, and them merge the PR"
 
 ## Tasks
 - D1 / paused local diagnosis | S1-S2,S10,S14 | delegated read-only local artifact inspection | done: mv5luttq-5-i2y9 PASS/high-confidence local root cause;26.3 palette id/properties plus System chat feedback; no source/server changes | commit: not applicable, diagnosis-only.
@@ -27,16 +28,30 @@ Delivery: feature-branch-chain; verified work-unit commits authorized, no push/p
 - T0 / M0 runtime gate | S1-S3,S10,S13 | done: independent verifier PASS; exact two-block probes pass26.1.2/26.2/26.3; focused13/full66; docs current; commit recorded | commit: 9754e79.
 - T1 / M1 | S3,S10 | inline + independent high-risk verifier | done: bounded re-verification PASS; dead import removed; final focused7 passed/0.03s;full73 passed/2.09s | commit: 9d26d7a..
 - T2 / M2 | S6-S8,S10 | inline + independent high-risk verifier | done: independent verifier PASS for scoped foundation; README current at77 tests; focused4/full77 | commit: 70196c9.
-- T3 / M3 | S4-S5,S7 | inline | pending: trees, supports, platforms and foliage exclusion | commit: pending.
-- T4 / M4 | S6 | inline | pending: complete building catalogue and fixtures | commit: pending.
-- T5 / M5 | S7 | inline | pending: bridges and continuous 3D routes | commit: pending.
-- T6 / M6 | S5-S10 | inline + independent verifier | pending: complete Compact village | commit: pending.
-- T7 / M7 | S4,S6-S10 | inline + independent verifier | pending: complete Mega village | commit: pending.
-- T8 / M8 | S1,S9-S10 | inline + independent verifier | pending: protected placement/session lifecycle | commit: pending.
-- T9 / M9 | S8-S10 | inline + runtime/visual QA | pending: water, gardens and lighting | commit: pending.
-- T10 / M10 | S1-S2,S11-S12 | inline + independent verifier | pending: docs, CI, packaging and final report | commit: pending.
+- T3 / M3 | S4-S5,S7,S15 | branch `feat/t3-trees-platforms` pushed; inline + independent high-risk verifier | in_progress: bounded single-tree foundation verifier PASS; focused5/full82; Mega/Compact counts and routing future scope; commit complete, issue-linked PR #1, type label, checks and merge pending | commit: ed7f228.
+- T4 / M4 | S6,S15 | branch `feat/t4-building-catalogue`, issue-linked PR to main, merge after checks | pending: complete building catalogue and fixtures | commit: pending.
+- T5 / M5 | S7,S15 | branch `feat/t5-bridges-routes`, issue-linked PR to main, merge after checks | pending: bridges and continuous 3D routes | commit: pending.
+- T6 / M6 | S5-S10,S15 | branch `feat/t6-compact-village`, issue-linked PR to main, merge after checks | pending: complete Compact village | commit: pending.
+- T7 / M7 | S4,S6-S10,S15 | branch `feat/t7-mega-village`, issue-linked PR to main, merge after checks | pending: complete Mega village | commit: pending.
+- T8 / M8 | S1,S9-S10,S15 | branch `feat/t8-placement-lifecycle`, issue-linked PR to main, merge after checks | pending: protected placement/session lifecycle | commit: pending.
+- T9 / M9 | S8-S10,S15 | branch `feat/t9-environment-lighting`, issue-linked PR to main, merge after checks | pending: water, gardens and lighting | commit: pending.
+- T10 / M10 | S1-S2,S11-S12,S15 | branch `feat/t10-release-packaging`, issue-linked PR to main, merge after checks | pending: docs, CI, packaging and final report | commit: pending.
 
 ## Log
+L52 — T3 work-unit commit created: `ed7f228` (`feat(generator): add deterministic tree platform foundation`) and pushed to `origin/feat/t3-trees-platforms`. Commit contains the bounded deterministic single-tree generator, platform/clearance model and focused tests. T3 is not marked fully done until its issue-linked PR is checked and merged to main under S15; full Mega/Compact layout remains future work.
+
+L51 — Todo reconciliation requested by user, verbatim: "The todo plan has not been reviewed during several tool-use turns. Check whether it still matches the work performed and update tasks where needed. Do not mark work done without verification." Rebuilt projection. T3 remains in_progress: bounded verifier PASS for single-tree foundation, but no T3 commit, PR, checks or merge yet. Full Mega/Compact scope remains future work.
+
+L50 — T3 GREEN: generator preserves first occupied structural blocks at intentional overlaps and reserves central clearance through the platform underside. Focused tree suite5 passed0.04s,exit0; full suite82 passed2.20s,exit0. Seed determinism, seed variation, materials, platform supports, bounds and foliage/platform clearance tests pass. Independent verification and commit/PR/merge pending.
+
+L49 — User requested todo reconciliation, verbatim: "The todo plan has not been reviewed during several tool-use turns. Check whether it still matches the work performed and update tasks where needed. Do not mark work done without verification." Rebuilt the full projection. T3 remains the only in-progress task. Latest executed focused result remains4 passed/1 failed before the newest clearance adjustment; after that source edit, no focused/full test has run. Structural overlap handling and platform-underside clearance are unverified. No T3 completion, verifier, commit, PR or merge claim. — User requested todo reconciliation, verbatim: "The todo plan has not been reviewed during several tool-use turns. Check whether it still matches the work performed and update tasks where needed." Rebuilt projection. Latest focused tree run exited1:4 passed,1 failed; structural overlap handling now preserves first occupied blocks, but the clearance assertion fails because clearance AABB extends through platform level and therefore contains intentional platform planks. No full suite, verifier, commit, PR or merge.
+
+L47 — User requested todo reconciliation, verbatim: "The todo plan has not been reviewed during several tool-use turns. Check whether it still matches the work performed and update tasks where needed. Do not mark work done without verification." Rebuilt projection with T3 only in progress. Latest focused tree run exited1:5 failed because generate_tree attempts overlapping jungle-log writes at the same coordinate with different axis properties; Scene conflict detection correctly rejects the collision. Full suite did not run because focused tests failed first. No task completed, no commit, PR or merge, and no GitHub delivery claim beyond branch creation/push.
+
+L46 — User requested todo reconciliation, verbatim: "The todo plan has not been reviewed during several tool-use turns. Check whether it still matches the work performed and update tasks where needed." T3 is the only in-progress task. Branch `feat/t3-trees-platforms` was created/pushed to origin under S15. RED: focused tree tests failed collection exit2 with ModuleNotFoundError because generator package did not exist. Then wrote generator/__init__.py, generator/trees.py and tests/unit/test_tree_generation.py; source is partial. No focused/full GREEN, verifier, commit, PR or merge. T4-T10 remain pending; existing T0-T2 done and committed.
+
+L45 — User delivery instruction, verbatim: "if not, on each TODO complete create a branch, push it, then create a PR to main, and them merge the PR". GitHub inspection found no prior origin/repository; with explicit public visibility choice, created `athegreat90/TreehouseVillage` as public, configured origin, pushed the existing feature branch and main baseline, set default branch main, created approved issue #1 (`status:approved`). Existing completed T0/T1/T2 work is treated as the main baseline rather than retroactively fabricated PRs. Future TODOs T3-T10 each require a compliant branch, push, issue-linked PR to main, exactly one type label, required checks, and merge. No PR or merge has yet been created.
+
 L44 — T2 work-unit commit created: `70196c9` (`feat(validation): add structural and traversal foundation`). Final full suite77 passed2.12s and diff check had only pre-existing CRLF warnings. T2 scope covers deterministic support, reserved-volume and horizontal player-clearance foundations with negative fixtures; stairs/ladders/bridges/fluids/full Minecraft semantics remain future work. T3 is next.
 
 L43 — T2 bounded verification mv6xfhx9-9-4p55 PASS for scoped foundation: focused4 passed0.02s, own boundary probes passed, compileall clean, diff check exit0. Verified default support Y=0, explicit ground_y, unsupported-name filtering, reserved AABB collision, supported/headroom walkability, deterministic non-mutating BFS. S6-S8 remain partial by design because building contracts, stairs/ladders/bridges, fluids and full Minecraft semantics are future work. Updated README from66 to77 tests and M0 status to M1/T2 foundation. T2 is commit-ready; no village/game/release claim.
