@@ -26,7 +26,7 @@ Delivery: feature-branch-chain; verified work-unit commits authorized, no push/p
 - T0a / M0 archive slice | S1-S3,S10,S13 | inline + independent high-risk verifier | done: exact archive metadata and server formats verified; work-unit commit recorded | commit: 9754e79.
 - T0 / M0 runtime gate | S1-S3,S10,S13 | done: independent verifier PASS; exact two-block probes pass26.1.2/26.2/26.3; focused13/full66; docs current; commit recorded | commit: 9754e79.
 - T1 / M1 | S3,S10 | inline + independent high-risk verifier | done: bounded re-verification PASS; dead import removed; final focused7 passed/0.03s;full73 passed/2.09s | commit: 9d26d7a..
-- T2 / M2 | S6-S8,S10 | inline | pending: independent coverage, collision and movement validators | commit: pending.
+- T2 / M2 | S6-S8,S10 | inline + independent high-risk verifier | done: independent verifier PASS for scoped foundation; README current at77 tests; focused4/full77; commit now being created | commit: pending.
 - T3 / M3 | S4-S5,S7 | inline | pending: trees, supports, platforms and foliage exclusion | commit: pending.
 - T4 / M4 | S6 | inline | pending: complete building catalogue and fixtures | commit: pending.
 - T5 / M5 | S7 | inline | pending: bridges and continuous 3D routes | commit: pending.
@@ -37,6 +37,16 @@ Delivery: feature-branch-chain; verified work-unit commits authorized, no push/p
 - T10 / M10 | S1-S2,S11-S12 | inline + independent verifier | pending: docs, CI, packaging and final report | commit: pending.
 
 ## Log
+L43 — T2 bounded verification mv6xfhx9-9-4p55 PASS for scoped foundation: focused4 passed0.02s, own boundary probes passed, compileall clean, diff check exit0. Verified default support Y=0, explicit ground_y, unsupported-name filtering, reserved AABB collision, supported/headroom walkability, deterministic non-mutating BFS. S6-S8 remain partial by design because building contracts, stairs/ladders/bridges, fluids and full Minecraft semantics are future work. Updated README from66 to77 tests and M0 status to M1/T2 foundation. T2 is commit-ready; no village/game/release claim.
+
+L42 — T2 GREEN: support validation now defaults to world Y=0 and requires explicit ground_y for prepared terrain planes. Focused validator suite4 passed0.02s,exit0; full suite77 passed2.11s,exit0. T2 foundation covers support detection, reserved-volume collisions and horizontal player-clearance BFS with negative fixtures. It does not yet model stairs, ladders, bridges, fluids or full Minecraft collision semantics. Independent verification and commit pending.
+
+L41 — User requested todo reconciliation, verbatim: "The todo plan has not been reviewed during several tool-use turns. Check whether it still matches the work performed and update tasks where needed. Do not mark work done without verification." Rebuilt projection with T2 only in progress. Focused T2 run exited1:3 passed,1 failed; `validate_supports` defaults ground_y to scene minimum, so a lone Y=4 block is incorrectly accepted as supported. Full suite did not execute because the chained command stopped after focused failure. No task marked done, no commit or independent verification.
+
+L40 — User requested todo reconciliation, verbatim: "The todo plan has not been reviewed during several tool-use turns. Check whether it still matches the work performed and update tasks where needed." Rebuilt projection. T2 remains the only in-progress task. Observed RED: tests/unit/test_validation_foundation.py collection failed exit2 with ModuleNotFoundError because validation package did not exist. Then wrote validation/__init__.py and validation/structural.py; tests/source are partial. No focused/full GREEN, independent verification or commit claim; dependent T3-T10 remain pending.
+
+L39 — T2 started: scope is independent structural/traversal validation over Scene. First unit covers support detection, reserved-volume collisions, and horizontal player-clearance BFS with negative fixtures. It does not yet encode building contracts, stairs, ladders, bridges, fluids or Minecraft runtime collision semantics. Tests will establish RED before source implementation.
+
 L38 — T1 work-unit commit created: `9d26d7a` (`feat(generator): add deterministic geometry serialization foundation`). T1 delivers geometry/model.py, serialization/structure.py, serialization/segmentation.py and five focused foundation tests. T1 scope is complete for S3/S10 foundation only; future round-trip scene loading, block entities, validators, trees, buildings, bridges and village generation remain separate tasks.
 
 L37 — T1 bounded re-verification mv5nxnos-8-7kod PASS: diff check exit0; focused7 passed0.05s; full unit suite73 passed2.17s; independent wire inspection confirmed size List[Int] tag9, palette/blocks List[Compound], block positions List[Int], and legacy/26.3 palette keys. Removed unused IntArrayTag import. Final parent focused7 passed0.03s, full73 passed2.09s, diff check had only pre-existing CRLF warning. T1 is commit-ready; no village/game/release claims.

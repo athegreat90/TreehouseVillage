@@ -1,6 +1,6 @@
 # Ultimate Treehouse Village
 
-Offline Python tooling that will generate two procedurally composed, vanilla Java treehouse villages (Mega and Compact) as real NBT structures plus a datapack. **Status: M0 compatibility tooling. Exact server format evidence is verified, but no village structures, production placement datapack or release exist yet, and no Minecraft version is certified as supported.**
+Offline Python tooling that will generate two procedurally composed, vanilla Java treehouse villages (Mega and Compact) as real NBT structures plus a datapack. **Status: M1/T2 generator foundation. Exact server format and narrow two-block NBT gates are verified, but no village structures, production placement datapack or release exist yet, and no Minecraft version is certified for full village support.**
 
 ## Quick path
 
@@ -27,8 +27,9 @@ Targets are the exact Java versions `26.1.2`, `26.2` and `26.3`. Official metada
 
 ## Current checks and blockers
 
-The latest completed offline suite passed **66 tests**, including six NBT
-toolchain probes and thirteen server-harness cases. Fake-console tests are not
+The latest completed offline suite passed **77 tests**, including six NBT
+toolchain probes, thirteen server-harness cases, five geometry/serialization
+foundation tests, and four structural/traversal validator tests. Fake-console tests are not
 Minecraft execution evidence. See [exact-server smoke probes](docs/compatibility/server-smoke.md)
 for isolated real-server verification. Archive inspection verified:
 26.1.2 DataVersion 4790 / data format 101.1; 26.2 DataVersion 4903 / data
@@ -45,7 +46,9 @@ full village compatibility remains **NOT TESTED**.
 
 ## Not done yet
 
-Geometry, NBT serialization, validation, placement, runtime QA and packaging (M1+).
+Village geometry, building generation, placement, runtime QA and packaging
+remain incomplete (T3+). Geometry/serialization foundation and the first
+structural/traversal validator foundation are now implemented and tested.
 Isolated vanilla servers have now run: the two-block NBT probes passed on
 26.1.2, 26.2, and 26.3. See [the probe results](docs/compatibility/server-smoke.md#observed-results).
 These narrow probes do not certify village compatibility. The first failed
