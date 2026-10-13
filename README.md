@@ -1,6 +1,6 @@
 # Ultimate Treehouse Village
 
-Offline Python tooling that will generate two procedurally composed, vanilla Java treehouse villages (Mega and Compact) as real NBT structures plus a datapack. **Status: T4a building-contract foundation; furnished catalogue pending. Exact server format and narrow two-block NBT gates are verified, but no village structures, production placement datapack or release exist yet, and no Minecraft version is certified for full village support.**
+Offline Python tooling that will generate two procedurally composed, vanilla Java treehouse villages (Mega and Compact) as real NBT structures plus a datapack. **Status: T4b adds four deterministic furnished-home scenes and offline validation. The civic/outdoor catalogue, village composition, bridges, placement datapack and releases remain incomplete. Exact server formats and narrow two-block NBT gates do not certify full-village Minecraft support.**
 
 ## Quick path
 
@@ -18,7 +18,8 @@ Targets are the exact Java versions `26.1.2`, `26.2` and `26.3`. Official metada
 
 | Path | Purpose |
 |------|---------|
-| `src/treehouse_village/` | Compatibility discovery and verified archive inspection |
+| `src/treehouse_village/` | Compatibility, sparse geometry, deterministic tree/home generation, building contracts, and archive inspection |
+| `docs/homes.md` | Residential home designs, generation API, coverage and support-checker limits |
 | `scripts/discover_versions.py` | Compatibility discovery CLI |
 | `config/versions/` | Exact-version profiles with embedded server format evidence; runtime support unverified |
 | `build/compatibility/` | Per-version evidence and last-run report |
@@ -27,9 +28,10 @@ Targets are the exact Java versions `26.1.2`, `26.2` and `26.3`. Official metada
 
 ## Current checks and blockers
 
-The latest completed offline suite passed **103 tests**, including the single-tree
-foundation and 21 building-contract tests. See [building contracts](docs/building-contracts.md)
-for coverage masks and optional required fixture states. Fake-console tests are not
+The latest completed offline suite passed **125 tests**, including the single-tree
+foundation, 21 building-contract tests, and 22 furnished-home tests. See [building
+contracts](docs/building-contracts.md) and [furnished homes](docs/homes.md) for
+coverage, required fixture states, and support-checker limitations. Fake-console tests are not
 Minecraft execution evidence. See [exact-server smoke probes](docs/compatibility/server-smoke.md)
 for isolated real-server verification. Archive inspection verified:
 26.1.2 DataVersion 4790 / data format 101.1; 26.2 DataVersion 4903 / data
@@ -42,14 +44,19 @@ Windows Python 3.14 wheel without runtime dependencies. See
 hash-pinned installation and verification boundaries. The existing Python
 3.14 interpreter is preserved; the failed Python 3.12 installation is not
 retried. The narrow two-block NBT/game-load gate has passed for all three targets;
-full village compatibility remains **NOT TESTED**.
+full village compatibility remains **NOT TESTED**. No furnished-home game placement
+or client visual check has run. The generic direct-below support checker still
+reports known horizontal ceiling-span and hanging-lantern warnings; T4b tests verify
+their explicit structural anchors rather than claiming that helper is warning-free.
 
 ## Not done yet
 
-Complete village layouts, furnished building generation, placement, runtime QA
-and packaging remain incomplete (T4+). The single-tree foundation is implemented;
-T4a adds declared building coverage and fixture-state validation. Geometry/serialization foundation and the first
-structural/traversal validator foundation are now implemented and tested.
+Complete village layouts, civic/outdoor building generation, bridges, placement,
+runtime QA and packaging remain incomplete (T4c+ and later). T4a added declared
+building coverage and fixture-state validation. T4b now generates four standalone
+furnished residential scenes; they are not yet assembled into Mega or Compact villages.
+Geometry/serialization and the first structural/traversal validator foundations are
+also implemented and tested.
 Isolated vanilla servers have now run: the two-block NBT probes passed on
 26.1.2, 26.2, and 26.3. See [the probe results](docs/compatibility/server-smoke.md#observed-results).
 These narrow probes do not certify village compatibility. The first failed
