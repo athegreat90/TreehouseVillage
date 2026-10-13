@@ -28,7 +28,7 @@ Delivery: per-TODO GitHub PRs to main; verified work-unit commits, branch pushes
 - T0 / M0 runtime gate | S1-S3,S10,S13 | done: independent verifier PASS; exact two-block probes pass26.1.2/26.2/26.3; focused13/full66; docs current; commit recorded | commit: 9754e79.
 - T1 / M1 | S3,S10 | inline + independent high-risk verifier | done: bounded re-verification PASS; dead import removed; final focused7 passed/0.03s;full73 passed/2.09s | commit: 9d26d7a..
 - T2 / M2 | S6-S8,S10 | inline + independent high-risk verifier | done: independent verifier PASS for scoped foundation; README current at77 tests; focused4/full77 | commit: 70196c9.
-- T3 / M3 | S4-S5,S7,S15 | branch `feat/t3-trees-platforms` pushed; inline + independent high-risk verifier | in_progress: bounded single-tree foundation verifier PASS; focused5/full82; Mega/Compact counts and routing future scope; commit, issue-linked PR #1, type label, checks and merge pending | commit: pending.
+- T3 / M3 | S4-S5,S7,S15 | branch `feat/t3-trees-platforms` pushed; inline + independent high-risk verifier | in_progress: bounded single-tree foundation verifier PASS; focused5/full82; Mega/Compact counts and routing future scope; commit complete, issue-linked PR #1, type label, checks and merge pending | commit: ed7f228.
 - T4 / M4 | S6,S15 | branch `feat/t4-building-catalogue`, issue-linked PR to main, merge after checks | pending: complete building catalogue and fixtures | commit: pending.
 - T5 / M5 | S7,S15 | branch `feat/t5-bridges-routes`, issue-linked PR to main, merge after checks | pending: bridges and continuous 3D routes | commit: pending.
 - T6 / M6 | S5-S10,S15 | branch `feat/t6-compact-village`, issue-linked PR to main, merge after checks | pending: complete Compact village | commit: pending.
@@ -38,6 +38,8 @@ Delivery: per-TODO GitHub PRs to main; verified work-unit commits, branch pushes
 - T10 / M10 | S1-S2,S11-S12,S15 | branch `feat/t10-release-packaging`, issue-linked PR to main, merge after checks | pending: docs, CI, packaging and final report | commit: pending.
 
 ## Log
+L52 — T3 work-unit commit created: `ed7f228` (`feat(generator): add deterministic tree platform foundation`) and pushed to `origin/feat/t3-trees-platforms`. Commit contains the bounded deterministic single-tree generator, platform/clearance model and focused tests. T3 is not marked fully done until its issue-linked PR is checked and merged to main under S15; full Mega/Compact layout remains future work.
+
 L51 — Todo reconciliation requested by user, verbatim: "The todo plan has not been reviewed during several tool-use turns. Check whether it still matches the work performed and update tasks where needed. Do not mark work done without verification." Rebuilt projection. T3 remains in_progress: bounded verifier PASS for single-tree foundation, but no T3 commit, PR, checks or merge yet. Full Mega/Compact scope remains future work.
 
 L50 — T3 GREEN: generator preserves first occupied structural blocks at intentional overlaps and reserves central clearance through the platform underside. Focused tree suite5 passed0.04s,exit0; full suite82 passed2.20s,exit0. Seed determinism, seed variation, materials, platform supports, bounds and foliage/platform clearance tests pass. Independent verification and commit/PR/merge pending.
