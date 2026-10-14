@@ -1,8 +1,40 @@
 from __future__ import annotations
 
-from rapidnbt import CompoundTag, IntTag, ListTag, NbtCompressionType, NbtFileFormat, nbtio
+from collections.abc import Iterable
+from dataclasses import dataclass
+import math
+
+from rapidnbt import (
+    CompoundTag,
+    DoubleTag,
+    IntTag,
+    ListTag,
+    NbtCompressionType,
+    NbtFileFormat,
+    nbtio,
+)
 
 from ..geometry.model import Block, Scene, Vec3
+
+
+@dataclass(frozen=True)
+class StructureEntity:
+    """Entity placement data embedded in a Java structure-template NBT file."""
+
+    position: tuple[float, float, float]
+    block_position: Vec3
+    nbt: CompoundTag
+
+    def __post_init__(self) -> None:
+        if len(self.position) != 3 or any(
+            not isinstance(value, (int, float)) or not math.isfinite(value)
+            for value in self.position
+        ):
+            raise ValueError("entity position must contain three finite coordinates")
+        if not isinstance(self.block_position, Vec3):
+            raise TypeError("entity block_position must be a Vec3")
+        if not isinstance(self.nbt, CompoundTag):
+            raise TypeError("entity nbt must be a CompoundTag")
 
 
 class StructureSerializer:
@@ -21,6 +53,10 @@ class StructureSerializer:
     def _ints(values: list[int]) -> ListTag:
         return ListTag([IntTag(value) for value in values])
 
+    @staticmethod
+    def _doubles(values: tuple[float, float, float]) -> ListTag:
+        return ListTag([DoubleTag(value) for value in values])
+
     def _palette_entry(self, block: Block) -> CompoundTag:
         name_key = "id" if self.modern_palette else "Name"
         properties_key = "properties" if self.modern_palette else "Properties"
@@ -29,7 +65,7 @@ class StructureSerializer:
             values[properties_key] = CompoundTag(dict(block.properties))
         return CompoundTag(values)
 
-    def _root(self, scene: Scene) -> CompoundTag:
+    def _root(self, scene: Scene, entities: Iterable[StructureEntity] = ()) -> CompoundTag:
         bounds = scene.bounds
         if bounds is None:
             raise ValueError("cannot serialize an empty scene")
@@ -46,14 +82,33 @@ class StructureSerializer:
                 "state": IntTag(palette_index[block]),
                 "pos": self._ints([local.x, local.y, local.z]),
             }))
+
+        entity_tags: list[CompoundTag] = []
+        for entity in entities:
+            if not bounds.contains(entity.block_position):
+                raise ValueError("entity block position is outside scene bounds")
+            if scene.get_block(entity.block_position) is None:
+                raise ValueError("entity block position must be occupied in the scene")
+            local_block = entity.block_position - origin
+            local_position = (
+                entity.position[0] - origin.x,
+                entity.position[1] - origin.y,
+                entity.position[2] - origin.z,
+            )
+            entity_tags.append(CompoundTag({
+                "pos": self._doubles(local_position),
+                "blockPos": self._ints([local_block.x, local_block.y, local_block.z]),
+                "nbt": entity.nbt,
+            }))
+
         return CompoundTag({
             "DataVersion": IntTag(self.data_version),
             "size": self._ints([bounds.size.x, bounds.size.y, bounds.size.z]),
             "palette": ListTag([self._palette_entry(block) for block in palette]),
             "blocks": ListTag(block_tags),
-            "entities": ListTag(),
+            "entities": ListTag(entity_tags),
         })
 
-    def dumps(self, scene: Scene) -> bytes:
-        return nbtio.dumps(self._root(scene), format=NbtFileFormat.BIG_ENDIAN,
+    def dumps(self, scene: Scene, *, entities: Iterable[StructureEntity] = ()) -> bytes:
+        return nbtio.dumps(self._root(scene, entities), format=NbtFileFormat.BIG_ENDIAN,
                             compression_type=NbtCompressionType.GZIP)
