@@ -7,9 +7,11 @@ from .contracts import (
 )
 from .homes import HOME_DESIGNS, HomeAssembly, HomeDesign, generate_home
 from .civic import CIVIC_DESIGNS, CivicAssembly, CivicDesign, generate_civic
+from .outdoor import OUTDOOR_DESIGNS, OutdoorAssembly, OutdoorDesign, generate_outdoor
 
 __all__ = [
     "BuildingIssue", "BuildingSpec", "CoverageRequirement", "FixtureRequirement",
     "HOME_DESIGNS", "HomeAssembly", "HomeDesign", "generate_home", "validate_building",
     "CIVIC_DESIGNS", "CivicAssembly", "CivicDesign", "generate_civic",
+    "OUTDOOR_DESIGNS", "OutdoorAssembly", "OutdoorDesign", "generate_outdoor",
 ]
