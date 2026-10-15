@@ -181,17 +181,17 @@ def generate_village_hall(
         fixtures.append(FixtureRequirement(f"window_{index + 1}", position,
                                            design.window_block))
 
-    # Balcony deck at y=7 roofs the meeting hall; the trunk passes through,
-    # one cell stays open as the lower stairwell, and the top stair replaces
-    # one plank. Coverage counts every occupied cell; only the intentional
-    # opening stays uncovered.
+    # Balcony deck at y=7 roofs the meeting hall; the trunk passes through and
+    # two cells stay open as the lower stairwell (passage plus head clearance
+    # over the penultimate step). The top stair replaces one plank.
     lower_top = Vec3(_LOWER_RUN[-1][0], _DECK_Y, _LOWER_RUN[-1][1])
-    lower_open = Vec3(_LOWER_OPENING[0], _DECK_Y, _LOWER_OPENING[1])
+    lower_openings = {Vec3(_LOWER_OPENING[0], _DECK_Y, _LOWER_OPENING[1]),
+                      Vec3(9, _DECK_Y, 9)}  # head clearance above step 5
     trunk_deck = set(_trunk_cells(_DECK_Y, _DECK_Y))
     for x in range(15):
         for z in range(15):
             local = Vec3(x, _DECK_Y, z)
-            if local == lower_open:
+            if local in lower_openings:
                 continue  # intentional stairwell opening
             roof_cells.append(world(local))
             if (x, z) in trunk_deck or local == lower_top:
@@ -243,14 +243,15 @@ def generate_village_hall(
         for y in ys:
             put(Vec3(x, y, z), Block(design.fence_block))
 
-    # Observation platform at y=11: planks around the trunk, one stairwell
-    # opening, and the top stair replacing one plank. Coverage counts every
-    # occupied cell; only the intentional opening stays uncovered.
+    # Observation platform at y=11: planks around the trunk, two stairwell
+    # openings (passage plus head clearance over the penultimate step), and
+    # the top stair replacing one plank.
     trunk_platform = set(_trunk_cells(_PLATFORM_Y, _PLATFORM_Y))
+    upper_openings = {upper_open, Vec3(5, _PLATFORM_Y, 8)}
     for x in range(4, 11):
         for z in range(4, 11):
             local = Vec3(x, _PLATFORM_Y, z)
-            if local == upper_open:
+            if local in upper_openings:
                 continue  # intentional stairwell opening
             platform_cells.append(world(local))
             if (x, z) in trunk_platform or local == upper_top:

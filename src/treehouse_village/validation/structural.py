@@ -45,7 +45,11 @@ def validate_reserved_volumes(scene: Scene, volumes: Iterable[AABB]) -> tuple[Va
 
 
 def is_walkable(scene: Scene, position: Vec3) -> bool:
-    """Public predicate for a walkable standing cell."""
+    """Public predicate for a walkable standing cell.
+
+    Doors are passable: Minecraft players walk through closed doors, so a
+    cell occupied by a door (either half) counts as open for routing.
+    """
     return _walkable(scene, position)
 
 
@@ -113,7 +117,14 @@ def _neighbors(scene: Scene, current: Vec3, candidate: Vec3,
             yield landing
 
 
+def _passable(block) -> bool:
+    if block is None:
+        return True
+    # Closed doors occupy their cells but remain walk-through for players.
+    return block.name.endswith("_door")
+
+
 def _walkable(scene: Scene, position: Vec3) -> bool:
-    return (scene.get_block(position) is None and
+    return (_passable(scene.get_block(position)) and
             scene.get_block(position.translate(0, -1, 0)) is not None and
-            scene.get_block(position.translate(0, 1, 0)) is None)
+            _passable(scene.get_block(position.translate(0, 1, 0))))

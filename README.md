@@ -1,6 +1,6 @@
 # Ultimate Treehouse Village
 
-Offline Python tooling that will generate two procedurally composed, vanilla Java treehouse villages (Mega and Compact) as real NBT structures plus a datapack. **Status: T4b adds four deterministic furnished-home scenes and offline validation. The civic/outdoor catalogue, village composition, bridges, placement datapack and releases remain incomplete. Exact server formats and narrow two-block NBT gates do not certify full-village Minecraft support.**
+Offline Python tooling that will generate two procedurally composed, vanilla Java treehouse villages (Mega and Compact) as real NBT structures plus a datapack. **Status: T6 composes the complete Compact village (96x96, 5 giant trees, 8 furnished buildings, 7 suspension bridges) from `config/compact.json` with validated 3D routes. The Mega village, placement datapack, environment polish and releases remain incomplete. Exact server formats and narrow two-block NBT gates do not certify full-village Minecraft support.**
 
 ## Quick path
 
@@ -18,7 +18,8 @@ Targets are the exact Java versions `26.1.2`, `26.2` and `26.3`. Official metada
 
 | Path | Purpose |
 |------|---------|
-| `src/treehouse_village/` | Compatibility, sparse geometry, deterministic tree/home generation, building contracts, and archive inspection |
+| `src/treehouse_village/` | Compatibility, sparse geometry, deterministic tree/home generation, building contracts, village composition, and archive inspection |
+| `config/compact.json` | Declarative Compact layout: trees, buildings, bridges, route destinations |
 | `docs/homes.md` | Residential home designs, generation API, coverage and support-checker limits |
 | `scripts/discover_versions.py` | Compatibility discovery CLI |
 | `config/versions/` | Exact-version profiles with embedded server format evidence; runtime support unverified |
@@ -28,8 +29,11 @@ Targets are the exact Java versions `26.1.2`, `26.2` and `26.3`. Official metada
 
 ## Current checks and blockers
 
-The latest completed offline suite passed **125 tests**, including the single-tree
-foundation, 21 building-contract tests, and 22 furnished-home tests. See [building
+The latest completed offline suite passed **186 tests**, including the Compact village
+integration suite (config loading, counts, footprint, building contracts, 3D route
+reachability, ground plane, tree platforms, determinism and gzip segment
+reconstruction), the single-tree foundation, building-contract tests, and
+furnished-home tests. See [building
 contracts](docs/building-contracts.md) and [furnished homes](docs/homes.md) for
 coverage, required fixture states, and support-checker limitations. Fake-console tests are not
 Minecraft execution evidence. See [exact-server smoke probes](docs/compatibility/server-smoke.md)
