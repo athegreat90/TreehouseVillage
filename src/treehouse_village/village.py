@@ -14,7 +14,7 @@ from dataclasses import dataclass
 from .bridges import BridgeAssembly, BridgeSpec, generate_bridge
 from .buildings import (BuildingSpec, generate_civic, generate_home,
                         generate_outdoor, generate_village_hall)
-from .config import CompactConfig, VillageConfig
+from .config import CompactConfig, MegaConfig, VillageConfig
 from .generator import TreeAssembly, TreeSpec, generate_tree
 from .geometry.model import Block, Scene, Vec3
 from .routes import RouteGraph
@@ -27,8 +27,8 @@ _BUILDING_GENERATORS = {
 
 
 @dataclass(frozen=True)
-class CompactVillage:
-    """A fully composed Compact village ready for validation and serialization."""
+class Village:
+    """A fully composed village ready for validation and serialization."""
 
     config: VillageConfig
     trees: tuple[TreeAssembly, ...]
@@ -36,6 +36,10 @@ class CompactVillage:
     bridges: tuple[BridgeAssembly, ...]
     scene: Scene
     graph: RouteGraph
+
+
+# Backwards-compatible alias used by the Compact integration suite.
+CompactVillage = Village
 
 
 def _merge(target: Scene, overlay: Scene, label: str) -> None:
@@ -53,8 +57,8 @@ def _merge(target: Scene, overlay: Scene, label: str) -> None:
         target.set_block(position, block)
 
 
-def generate_compact_village(config: CompactConfig) -> CompactVillage:
-    """Compose the complete Compact village scene and its route graph.
+def generate_village(config: VillageConfig) -> Village:
+    """Compose the complete village scene and its route graph.
 
     Order matters: structures claim their cells first, then the ground
     plane fills only the still-empty y=0 cells of the footprint, so grass
@@ -134,7 +138,7 @@ def generate_compact_village(config: CompactConfig) -> CompactVillage:
         nodes=tuple((name, node_positions[name]) for name in config.node_names),
         edges=edges,
     )
-    return CompactVillage(
+    return Village(
         config=config,
         trees=tuple(trees),
         buildings=tuple(buildings),
@@ -142,3 +146,13 @@ def generate_compact_village(config: CompactConfig) -> CompactVillage:
         scene=scene,
         graph=graph,
     )
+
+
+def generate_compact_village(config: CompactConfig) -> Village:
+    """Compose the 96x96 Compact village."""
+    return generate_village(config)
+
+
+def generate_mega_village(config: MegaConfig) -> Village:
+    """Compose the 176x176 Mega village."""
+    return generate_village(config)
