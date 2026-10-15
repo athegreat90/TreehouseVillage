@@ -229,3 +229,11 @@ class CompactConfig(VillageConfig):
     def from_json(cls, path: str | Path) -> "CompactConfig":
         # cls is CompactConfig, so the shared loader builds this subclass.
         return cls._load(path, variant="compact")
+
+
+class MegaConfig(VillageConfig):
+    """The 176x176 Mega village variant."""
+
+    @classmethod
+    def from_json(cls, path: str | Path) -> "MegaConfig":
+        return cls._load(path, variant="mega")
