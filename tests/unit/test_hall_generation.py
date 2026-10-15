@@ -135,15 +135,15 @@ def test_village_hall_coverage_masks_are_complete():
     masks = {c.name: c for c in assembly.spec.coverage}
     assert set(masks) == {"floor", "wall", "roof", "walkway", "platform", "stair"}
     assert len(masks["floor"].positions) == 225
-    assert len(masks["roof"].positions) == 224   # 225 minus the lower stairwell opening
-    assert len(masks["platform"].positions) == 48  # 7x7: 38 planks + 9 trunk + 1 top stair
+    assert len(masks["roof"].positions) == 223   # 225 minus two stairwell openings
+    assert len(masks["platform"].positions) == 47  # 7x7: 37 planks + 9 trunk + 1 top stair
     assert len(masks["stair"].positions) == 11
-    assert len(masks["walkway"].positions) == 252  # deck planks 214 + platform planks 38
+    assert len(masks["walkway"].positions) == 250  # deck planks 213 + platform planks 37
 
 
 def test_village_hall_deck_and_platform_topology():
     scene = generate_village_hall().scene
-    for level, expected in ((7, 224), (11, 48)):
+    for level, expected in ((7, 223), (11, 47)):
         occupied = {p for p, _ in scene.blocks() if p.y == level}
         assert len(occupied) == expected
         supported = {p for p in occupied
