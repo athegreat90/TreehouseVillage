@@ -15,6 +15,7 @@ from .bridges import BridgeAssembly, BridgeSpec, generate_bridge
 from .buildings import (BuildingSpec, generate_civic, generate_home,
                         generate_outdoor, generate_village_hall)
 from .config import CompactConfig, MegaConfig, VillageConfig
+from .environment import place_environment
 from .generator import TreeAssembly, TreeSpec, generate_tree
 from .geometry.model import Block, Scene, Vec3
 from .routes import RouteGraph
@@ -113,6 +114,17 @@ def generate_village(config: VillageConfig) -> Village:
             position = Vec3(x, 0, z)
             if scene.get_block(position) is None:
                 scene.set_block(position, Block(config.ground_block))
+
+    # M9: gardens and lamp posts on the prepared grass. Both route nodes and
+    # every building entrance keep their approach cells clear (S9), so decor
+    # can never sever the walks that validate_routes later proves.
+    place_environment(
+        scene, width=config.width, depth=config.depth,
+        ground_block=config.ground_block,
+        nodes=tuple(node_positions.values()) +
+        tuple(spec.entrance for spec in buildings),
+        seed=config.seed,
+    )
 
     bounds = scene.bounds
     if bounds is None:

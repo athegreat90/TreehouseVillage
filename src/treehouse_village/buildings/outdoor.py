@@ -80,11 +80,21 @@ def generate_outdoor(outdoor_id: str, *, seed: int = 0, origin: Vec3 = Vec3(0, 0
     walkway_cells = []
 
     door_x = w // 2
+    # S8: the basin is carved out of the floor first; containment and
+    # support geometry (floor, walls, roof) is then built around it, and
+    # the water source itself is only placed afterwards in the fixture
+    # pass below — never before the geometry that contains it.
+    water_local: Vec3 | None = None
+    if any(block == "minecraft:water" for block in design.fixture_blocks.values()):
+        water_local = Vec3(w // 2 - 1, 0, d // 2)
+
     for x in range(w):
         for z in range(d):
-            put(Vec3(x, 0, z), Block(design.floor_block))
-            floor_cells.append(world(Vec3(x, 0, z)))
-            walkway_cells.append(world(Vec3(x, 0, z)))
+            position = Vec3(x, 0, z)
+            if position != water_local:
+                put(position, Block(design.floor_block))
+            floor_cells.append(world(position))
+            walkway_cells.append(world(position))
 
     # walls perimeter, leaving door gap
     for x in range(w):
@@ -113,12 +123,21 @@ def generate_outdoor(outdoor_id: str, *, seed: int = 0, origin: Vec3 = Vec3(0, 0
     fixtures = []
     idx = 0
     for name, block in design.fixture_blocks.items():
+        if block == "minecraft:water" and water_local is not None:
+            # S8: only now, with the basin and all geometry in place, does
+            # the water source go in — embedded in the floor it was carved
+            # from, so all four horizontal sides are floor blocks.
+            put(water_local, Block(block))
+            fixtures.append(FixtureRequirement(name, world(water_local), block))
+            continue
         attempt = 0
         while True:
             x = 1 + ((idx + attempt) % max(1, w - 2))
             z = 1 + (((idx * 2) + attempt) % max(1, d - 2))
             pos = Vec3(x, 1, z)
-            if scene.get_block(world(pos)) is None:
+            above_basin = (water_local is not None
+                           and x == water_local.x and z == water_local.z)
+            if not above_basin and scene.get_block(world(pos)) is None:
                 break
             attempt += 1
         put(pos, Block(block))

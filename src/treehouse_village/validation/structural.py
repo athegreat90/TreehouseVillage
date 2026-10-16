@@ -44,6 +44,45 @@ def validate_reserved_volumes(scene: Scene, volumes: Iterable[AABB]) -> tuple[Va
     )
 
 
+_WATER = "minecraft:water"
+
+
+def validate_water_containment(scene: Scene, *, ground_y: int | None = None) -> tuple[ValidationIssue, ...]:
+    """Report water cells whose containment/support geometry is incomplete.
+
+    Offline we cannot tick fluids, so the durable contract is geometric:
+    every ``minecraft:water`` cell must rest on a supporting block directly
+    below it — or on the prepared site plane ``ground_y`` (the scene's
+    build plane by default) — and all four horizontal neighbours must be
+    occupied, so loading the template gives the water nowhere to spread
+    into. Stacked columns therefore need enclosure at every level.
+    """
+    if not scene:
+        return ()
+    minimum_y = ground_y if ground_y is not None else 0
+    issues: list[ValidationIssue] = []
+    for position, block in scene.blocks():
+        if block.name != _WATER:
+            continue
+        below = position.translate(0, -1, 0)
+        if position.y > minimum_y and scene.get_block(below) is None:
+            issues.append(ValidationIssue(
+                "water_unsupported", position,
+                f"water at {position} has no supporting block below it",
+            ))
+            # One root-cause issue per cell: without support the geometry is
+            # wrong regardless of the horizontal neighbours.
+            continue
+        for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            if scene.get_block(position.translate(dx, 0, dz)) is None:
+                issues.append(ValidationIssue(
+                    "water_uncontained", position,
+                    f"water at {position} has an open horizontal side and would spread",
+                ))
+                break
+    return tuple(issues)
+
+
 def is_walkable(scene: Scene, position: Vec3) -> bool:
     """Public predicate for a walkable standing cell.
 

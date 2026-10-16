@@ -1,6 +1,6 @@
 # Ultimate Treehouse Village
 
-Offline Python tooling that will generate two procedurally composed, vanilla Java treehouse villages (Mega and Compact) as real NBT structures plus a datapack. **Status: T6 composes the Compact village (96x96, 5 giant trees, 8 furnished buildings, 7 suspension bridges) from `config/compact.json`, and T7 composes the Mega village (176x176, 9 giant trees, 16 furnished buildings, 15 suspension bridges, 2 waterfall sanctuaries, 3 viewing platforms) from `config/mega.json`, both with validated 3D routes, and T8 assembles the placement datapack (`src/treehouse_village/datapack.py`: version-pinned `pack.mcmeta`, segmented gzip NBT templates, staged placement functions with a marker-carried session). Environment polish and releases remain incomplete. Exact server formats and narrow two-block NBT gates do not certify full-village Minecraft support.**
+Offline Python tooling that will generate two procedurally composed, vanilla Java treehouse villages (Mega and Compact) as real NBT structures plus a datapack. **Status: T6 composes the Compact village (96x96, 5 giant trees, 8 furnished buildings, 7 suspension bridges) from `config/compact.json`, and T7 composes the Mega village (176x176, 9 giant trees, 16 furnished buildings, 15 suspension bridges, 2 waterfall sanctuaries, 3 viewing platforms) from `config/mega.json`, both with validated 3D routes, and T8 assembles the placement datapack (`src/treehouse_village/datapack.py`: version-pinned `pack.mcmeta`, segmented gzip NBT templates, staged placement functions with a marker-carried session), and T9 completes the environment polish (S8-contained water in `buildings/outdoor.py`, deterministic garden flowers and lamp posts via `environment.py`). Releases remain incomplete. Exact server formats and narrow two-block NBT gates do not certify full-village Minecraft support.**
 
 ## Quick path
 
@@ -30,12 +30,14 @@ Targets are the exact Java versions `26.1.2`, `26.2` and `26.3`. Official metada
 
 ## Current checks and blockers
 
-The latest completed offline suite passed **210 tests**, including the Compact and
+The latest completed offline suite passed **226 tests**, including the Compact and
 Mega village integration suites (config loading, counts, footprint, building
 contracts, 3D route reachability, ground plane, tree platforms, determinism and
 gzip segment reconstruction), the datapack assembly suite (version-pinned
 `pack.mcmeta`, gzip NBT segment templates, staged placement functions with
-relative offsets and no forbidden world mutations), the single-tree foundation,
+relative offsets and no forbidden world mutations), the environment suite
+(geometric water containment per S8, deterministic flowers and lamp posts that
+keep every route walkable), the single-tree foundation,
 building-contract tests, and furnished-home tests. See [building
 contracts](docs/building-contracts.md) and [furnished homes](docs/homes.md) for
 coverage, required fixture states, and support-checker limitations. Fake-console tests are not
