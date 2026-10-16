@@ -1,11 +1,10 @@
 # Ultimate Treehouse Village — Final Report (T0–T10)
 
 **Both villages, the placement datapack and evidence-gated release packaging are
-built and green on a static suite of 234 tests. T1–T9 are merged to `main`; T10
-(docs/CI/packaging) is complete on `feat/t10-release-packaging` and pending PR
-and merge. What is *not* proven — in-game placement, client visual QA, fluid
-ticks and therefore version support — is stated explicitly below and must not be
-glossed over (S2, S10).**
+built and green on a static suite of 234 tests, and merged to `main` (T1–T10;
+T10 via PR #14). What is *not* proven — in-game placement, client visual QA,
+fluid ticks and therefore version support — is stated explicitly below and must
+not be glossed over (S2, S10).**
 
 ## Quick path
 
@@ -30,7 +29,7 @@ glossed over (S2, S10).**
 | CI + release workflows | `.github/workflows/` | offline suite on ubuntu+windows (py3.14); tag/dispatch builds ZIPs as artifacts |
 | Docs | `README.md`, `CLAUDE.md`, `MEMORY.md`, `docs/` | this report + compatibility evidence |
 
-## Delivery ledger (T1–T9 merged to `main`; T10 pending merge)
+## Delivery ledger (T1–T10 merged to `main`)
 
 | Task | Commit | PR | Merge |
 |------|--------|----|-------|
@@ -48,7 +47,7 @@ glossed over (S2, S10).**
 | T7 Mega village | `22c3df2` | #11 | `41f9bd9` |
 | T8 placement datapack | `a5417a7` | #12 | `8d91e3a` |
 | T9 environment | `51488da` | #13 | `6fbb0c8` |
-| T10 docs/CI/packaging | `bf50650`, `432bb9e` | pending | pending |
+| T10 docs/CI/packaging | `bf50650`, `432bb9e`, `817bed1` | #14 | `97c7d88` |
 
 The tracker Log (`odd/tasks/ultimate-treehouse-village.md`) carries the full
 identities for every slice, including the T10 record written after its merge.
