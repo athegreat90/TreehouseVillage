@@ -79,8 +79,9 @@ Still open:
   in-game testing is available.
 - **Version support claims**: every evidence file reads `support: unverified`,
   `runtime_qa: pending`.
-- **Publishing a release**: CI builds the artifacts; creating a public
-  GitHub Release stays a human decision.
+- **Publishing a release**: a `v*` tag makes CI build the artifacts and
+  attach them to a **draft** GitHub Release; reviewing the assets and
+  clicking Publish stays a human decision.
 
 Isolated vanilla servers have now run: the two-block NBT probes passed on
 26.1.2, 26.2, and 26.3. See [the probe results](docs/compatibility/server-smoke.md#observed-results).

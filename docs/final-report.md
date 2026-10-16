@@ -90,10 +90,10 @@ version-labeled artifact (S11); they do **not** justify a support claim (S2).
 |----------|------|
 | `dist/treehouse-village-<version>.zip` | evidence-gated; `pack.mcmeta` at archive root, no wrapping folder (S11) |
 | `dist/SHA256SUMS.txt` | `<sha256>  <filename>` per line; rebuilt, never duplicated (S12) |
-| `dist/` | gitignored — CI rebuilds artifacts on `v*` tags or manual dispatch; publishing is a human decision |
+| `dist/` | gitignored — on `v*` tags CI rebuilds artifacts and attaches them to a draft GitHub Release; manual dispatch is a build-only dry run; publishing stays a human decision |
 
 ## Next step
 
 1. **Client visual QA on an exact server (S14) + fluid-tick observation (S8)** — the only remaining gates before any `support` claim.
-2. If the gates pass: refresh the evidence JSONs (`support`/`runtime_qa`), then publish a GitHub Release from the built artifacts (human decision).
+2. If the gates pass: refresh the evidence JSONs (`support`/`runtime_qa`), then review the draft GitHub Release the `v*` tag run produced and publish it (human decision).
 3. T10 identities live in the tracker Log.
