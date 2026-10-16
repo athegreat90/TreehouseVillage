@@ -1,9 +1,11 @@
 # Ultimate Treehouse Village — Final Report (T0–T10)
 
 **Both villages, the placement datapack and evidence-gated release packaging are
-built, green on a static suite of 234 tests, and merged to `main`. What is *not*
-proven — in-game placement, client visual QA, fluid ticks and therefore version
-support — is stated explicitly below and must not be glossed over (S2, S10).**
+built and green on a static suite of 234 tests. T1–T9 are merged to `main`; T10
+(docs/CI/packaging) is complete on `feat/t10-release-packaging` and pending PR
+and merge. What is *not* proven — in-game placement, client visual QA, fluid
+ticks and therefore version support — is stated explicitly below and must not be
+glossed over (S2, S10).**
 
 ## Quick path
 
@@ -28,7 +30,7 @@ support — is stated explicitly below and must not be glossed over (S2, S10).**
 | CI + release workflows | `.github/workflows/` | offline suite on ubuntu+windows (py3.14); tag/dispatch builds ZIPs as artifacts |
 | Docs | `README.md`, `CLAUDE.md`, `MEMORY.md`, `docs/` | this report + compatibility evidence |
 
-## Delivery ledger (merged to `main`)
+## Delivery ledger (T1–T9 merged to `main`; T10 pending merge)
 
 | Task | Commit | PR | Merge |
 |------|--------|----|-------|
@@ -46,7 +48,7 @@ support — is stated explicitly below and must not be glossed over (S2, S10).**
 | T7 Mega village | `22c3df2` | #11 | `41f9bd9` |
 | T8 placement datapack | `a5417a7` | #12 | `8d91e3a` |
 | T9 environment | `51488da` | #13 | `6fbb0c8` |
-| T10 docs/CI/packaging | this branch | see tracker | see tracker |
+| T10 docs/CI/packaging | `bf50650`, `432bb9e` | pending | pending |
 
 The tracker Log (`odd/tasks/ultimate-treehouse-village.md`) carries the full
 identities for every slice, including the T10 record written after its merge.
@@ -57,7 +59,7 @@ identities for every slice, including the T10 record written after its merge.
 |------|--------|
 | Static suite | **234 passed** — unit + integration, no Minecraft, no network in tests |
 | Suite growth | 66 (T0) → 186 (T6) → 210 (T8) → 226 (T9) → **234 (T10)**; every step in the Log |
-| Native ASSESS per work-unit | medium risk, `reviewDue=false` (under budget) |
+| Native ASSESS per work-unit | T1–T9: medium risk, `reviewDue=false`; T10: high risk, `reviewDue=true` → native review approved + acknowledged |
 | Exact-server two-block probes | PASS on 26.1.2 / 26.2 / 26.3 (`docs/compatibility/server-smoke.md`) |
 | Release build e2e | 3/3 versions: evidence gate → ZIP with root `pack.mcmeta` (106 entries) → `SHA256SUMS.txt` |
 
